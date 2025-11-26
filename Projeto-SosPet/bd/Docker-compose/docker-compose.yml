@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: kauanmartinsnm/mysql-tutorial:latest
+    container_name: mysql-conteiner
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: loja
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - loja-network
+
+  backend:
+    image: kauanmartinsnm/backend-tutorial-loja:latest
+    container_name: backend-container 
+    environment:
+      
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: loja
+    ports:
+      - "3000:3000"
+    networks:
+      - loja-network
+
+  frontend-loja:
+    build:
+      context: ../FrontEnd      # caminho da pasta onde está seu Dockerfile
+    container_name: frontend-container
+    ports:
+      - "8080:80"
+    networks:
+      - loja-network
+
+networks:
+  loja-network:
+
+volumes:
+  mysql_data:

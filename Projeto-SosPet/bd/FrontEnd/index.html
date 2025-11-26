@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SosPets 🐾</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+    rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="iphone">
+    <div class="notch"></div>
+    <div class="status-bar">
+      <div id="relogio">--:--</div>
+      <div>📶🔋</div>
+    </div>
+    <header>SosPets 🐾</header>
+
+    <!-- LOGIN -->
+    <div id="login" class="screen active">
+      <form onsubmit="event.preventDefault(); goTo('home')">
+        <h2>Entrar</h2>
+        <input type="text" placeholder="Usuário" />
+        <input type="password" placeholder="Senha" />
+        <button type="submit">Continuar</button>
+        <button type="button" class="btn-secondary" onclick="goTo('home')">Entrar como Visitante</button>
+      </form>
+    </div>
+
+    <!-- HOME -->
+    <div id="home" class="screen">
+      <div class="container">
+        <div class="card" onclick="goTo('pets')"><h3>🐶 Pets</h3><p>Gerencie seus pets</p></div>
+        <div class="card" onclick="goTo('novo')"><h3>➕ Novo Pet</h3><p>Cadastre um novo</p></div>
+        <div class="card" onclick="goTo('clinicas')"><h3>🏥 Clínicas</h3><p>Veterinárias próximas</p></div>
+        <div class="card" onclick="goTo('pronto')"><h3>🚑 Socorro</h3><p>Prontos-socorros</p></div>
+        <div class="card" onclick="goTo('produtos')"><h3>🛍 Produtos</h3><p>Loja de pets</p></div>
+        <div class="card" onclick="goTo('vacinas')"><h3>💉 Vacinas</h3><p>Controle de vacinas</p></div>
+        <div class="card" onclick="goTo('chat')"><h3>💬 Chat</h3><p>Fale conosco</p></div>
+      </div>
+    </div>
+
+    <!-- NOVO PET -->
+    <div id="novo" class="screen">
+      <form onsubmit="event.preventDefault(); alert('Pet cadastrado com sucesso!'); goTo('pets')">
+        <h2>Cadastro de Pet 🐕</h2>
+        <input type="text" placeholder="Nome do pet" required />
+        <select required>
+          <option value="">Espécie</option>
+          <option>Cachorro</option>
+          <option>Gato</option>
+          <option>Pássaro</option>
+        </select>
+        <input type="text" placeholder="Raça" />
+        <input type="number" placeholder="Idade (anos)" />
+        <input type="text" placeholder="Último local visto (ex: Av. Paulista, SP)" />
+        <textarea rows="3" placeholder="Observações (alergias, comportamentos, etc.)"></textarea>
+        <button type="submit">Salvar Pet</button>
+      </form>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- PETS -->
+    <div id="pets" class="screen">
+      <h2 style="color:#007aff; text-align:center">🐾 Meus Pets</h2>
+      <div class="pet-card">
+        <img src="https://via.placeholder.com/60?text=🐶" />
+        <div><h3>Max</h3><p>Labrador • 3 anos</p><p><b>Último local visto:</b> Av. Paulista, SP</p></div>
+      </div>
+      <div class="pet-card">
+        <img src="https://via.placeholder.com/60?text=🐱" />
+        <div><h3>Luna</h3><p>Siamês • 2 anos</p><p><b>Último local visto:</b> Rua das Flores, 45</p></div>
+      </div>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- CLÍNICAS -->
+    <div id="clinicas" class="screen">
+      <h2 style="color:#007aff; text-align:center">🏥 Clínicas Veterinárias</h2>
+      <p>Veja as clínicas mais próximas:</p>
+      <iframe src="https://www.google.com/maps?q=clínica+veterinária&output=embed"></iframe>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- PRONTO-SOCORRO -->
+    <div id="pronto" class="screen">
+      <h2 style="color:#007aff; text-align:center">🚑 Prontos-socorros</h2>
+      <p>Encontre atendimento emergencial:</p>
+      <iframe src="https://www.google.com/maps?q=pronto+socorro+veterinário&output=embed"></iframe>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- PRODUTOS -->
+    <div id="produtos" class="screen">
+      <h2 style="color:#007aff; text-align:center">🛍 Produtos para Pets</h2>
+      <ul>
+        <li>Ração Premium - R$ 89,90</li>
+        <li>Brinquedo Interativo - R$ 29,00</li>
+        <li>Coleira Antipulgas - R$ 45,50</li>
+      </ul>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- VACINAS -->
+    <div id="vacinas" class="screen">
+      <h2 style="color:#007aff; text-align:center">💉 Vacinas</h2>
+      <ul>
+        <li>Max - V10 - 10/01/2025 ✅</li>
+        <li>Luna - Antirrábica - 05/03/2025 ❌</li>
+      </ul>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <!-- CHAT -->
+    <div id="chat" class="screen">
+      <h2 style="color:#007aff; text-align:center">💬 Chat de Contato</h2>
+      <div class="chat-box" id="chatBox">
+        <div class="msg bot">Olá! 👋 Sou do suporte SosPets, como posso ajudar?</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="msgInput" placeholder="Digite sua mensagem..." />
+        <button onclick="enviarMsg()">Enviar</button>
+      </div>
+      <button class="btn-secondary" onclick="goTo('home')">Voltar</button>
+    </div>
+
+    <footer>
+      <div onclick="goTo('home')" class="active">🏠</div>
+      <div onclick="goTo('pets')">🐾</div>
+      <div onclick="goTo('clinicas')">🗺</div>
+      <div onclick="goTo('chat')">💬</div>
+      <div onclick="logout()">🚪</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
